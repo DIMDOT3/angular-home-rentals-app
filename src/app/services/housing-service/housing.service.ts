@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HousingLocation } from '../../housing-location/housing-location.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HousingService {
-  url = 'http://localhost:3200';
-  constructor() {}
+  // url = 'https://home-rentals-api.onrender.com';
+  private apiUrl: string | undefined;
+  constructor() {
+    this.apiUrl = environment.apiUrl
+  }
 
   async getAllHousingLocations(): Promise<HousingLocation[]> {
-    const data = await fetch(`${this.url}/homes`);
+    const data = await fetch(`${this.apiUrl}/homes`);
     return (await data.json()) ?? [];
   }
 
   async getHousingLocationById(
     _id: string,
   ): Promise<HousingLocation | undefined> {
-    const data = await fetch(`${this.url}/homes/${_id}`);
+    const data = await fetch(`${this.apiUrl}/homes/${_id}`);
     return (await data.json()) ?? {};
   }
 
   async addToMyHomesList(home: HousingLocation) {
-    const response = await fetch(`${this.url}/homes/mine`, {
+    const response = await fetch(`${this.apiUrl}/homes/mine`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -31,14 +35,14 @@ export class HousingService {
   }
 
   async deleteFromMyHomesList(homeId: string) {
-    const response = await fetch(`${this.url}/homes/mine/${homeId}`, {
+    const response = await fetch(`${this.apiUrl}/homes/mine/${homeId}`, {
       method: 'DELETE',
     });
     return response.status;
   }
 
   async getMyHomes() {
-    const data = await fetch(`${this.url}/homes/mine`);
+    const data = await fetch(`${this.apiUrl}/homes/mine`);
     return (await data.json()) ?? {};
   }
 
