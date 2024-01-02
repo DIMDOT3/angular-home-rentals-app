@@ -1,5 +1,4 @@
-<div *ngIf="myHomesList.length === 0">There are currently no saved listings.</div>
-<table *ngIf="myHomesList.length > 0" class="table">
+<table *ngIf="myHomesList.length; else noHomes" class="table">
     <thead>
         <tr>
             <th>List</th>
@@ -51,3 +50,8 @@
         </ng-template>
     </tbody>
 </table>
+
+<ng-template #noHomes>
+    <p>There are currently no saved listings.</p>
+</ng-template>
+
