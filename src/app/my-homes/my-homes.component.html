@@ -1,7 +1,7 @@
 <table *ngIf="myHomesList.length; else noHomes" class="table">
     <thead>
         <tr>
-            <th>List</th>
+            <th>Listing</th>
             <th>City</th>
             <th>State</th>
             <th>Available Units</th>
@@ -11,20 +11,20 @@
     </thead>
     <tbody>
         <ng-template ngFor let-myHome [ngForOf]="myHomesList" let-i="index">
-            <tr>
-                <td>{{ myHome.name }}</td>
-                <td>{{ myHome.city }}</td>
-                <td>{{ myHome.state }}</td>
-                <td>{{ myHome.availableUnits }}</td>
+            <tr data-testid="table-listing-row">
+                <td data-testid="table-listing-data-name">{{ myHome.name }}</td>
+                <td data-testid="table-listing-data-city">{{ myHome.city }}</td>
+                <td data-testid="table-listing-data-state">{{ myHome.state }}</td>
+                <td data-testid="table-listing-data-available-units">{{ myHome.availableUnits }}</td>
                 <!-- <td>{{ myHome.applicationSubmitted }}</td> -->
                 <td>
                     <div *ngIf="myHome.applicationSubmitted; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock><i class="bi bi-check-circle-fill"></i></ng-template>
-                    <ng-template #elseBlock><i class="bi bi-x-circle-fill"></i></ng-template>
+                    <ng-template #thenBlock><i class="bi bi-check-circle-fill" data-testid="table-listing-application-submitted"></i></ng-template>
+                    <ng-template #elseBlock><i class="bi bi-x-circle-fill" data-testid="table-listing-application-submitted"></i></ng-template>
                 </td>
                 <td>
                     <!-- Button trigger modal -->
-                    <i class="bi bi-trash-fill" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                    <i class="bi bi-trash-fill" [attr.data-testid]="'delete-button-' + myHome.name" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
         
         
                     <!-- Modal -->
