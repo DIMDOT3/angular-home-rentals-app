@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 import 'dotenv/config';
 
-export const baseUrl = process.env.BASE_URL || 'http://localhost:4200'
+export const baseUrl = process.env.BASE_URL || 'http://localhost:4200';
+export const apiBaseUrl = process.env.API_BASE_URL || 'http://localhost:3200';
 
 /**
  * Read environment variables from file.

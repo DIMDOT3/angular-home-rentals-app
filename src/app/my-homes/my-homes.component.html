@@ -39,8 +39,8 @@
                                 Are you sure you want to remove {{ myHome.name }} from your list?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="onDelete(myHome._id, myHome.name)">Delete</button>
+                                <button data-testid="cancel-delete-button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button data-testid="confirm-delete-button" type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="onDelete(myHome._id, myHome.name)">Delete</button>
                             </div>
                             </div>
                         </div>
