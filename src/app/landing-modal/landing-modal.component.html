@@ -1,0 +1,20 @@
+<div class="overlay" *ngIf="isOpen" (click)="close()"></div>
+<div class="modal" [ngClass]="{'closing': isClosing}" *ngIf="isOpen || isClosing">
+  <div class="modal-content">
+    <h2>Welcome to my portfolio application!</h2>
+    <div id="modal-paragraph">
+        <p>This sample application showcases my skillset. It is a full stack application that uses Angular, Express.js, and MongoDB. I have also written some automated integration testing using Playwright.</p>
+        <p>You can find the source code below:</p>
+        <ul>
+            <li><a href="https://github.com/DIMDOT3/angular-home-rentals-app" target="_blank">Frontend Code</a></li>
+                <ul>
+                    <li>Angular code is under the src directory.</li>
+                    <li>Playwright code is under the playwright-e2e directory. It is currently configured with a Github Actions workflow to be triggered.</li>
+                </ul>
+            <li><a href="https://github.com/DIMDOT3/angular-home-rentals-server" target="_blank">Backend Code</a></li>
+        </ul>
+        <p>This is a work in progress. It is deployed on Render on a free tier. If viewing the landing page doesn't immediately render listings, please allow 30 seconds for the server to spin up.</p>
+    </div>
+    <button type="button" class="btn btn-info close"(click)="close()">Go to App</button>
+  </div>
+</div>
